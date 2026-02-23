@@ -13,16 +13,16 @@
 --
 --  Example:
 --    C1 Collections panel:             Export on disk:
---    Nella & Mad Cold Shooting         Nella & Mad Cold Shooting/
---      Mad Cold                          Mad Cold/
---        Set 01  (11 images)               Set 01/  <- 11 JPEGs
---        Set 07   (7 images)               Set 07/  <-  7 JPEGs
---        Set 09  (16 images)               Set 09/  <- 16 JPEGs
---      Nella                             Nella/
---        Set 08  (54 images)               Set 08/  <- 54 JPEGs
---        Set 11  (66 images)               Set 11/  <- 66 JPEGs
---      Nella & Mad Cold                  Nella & Mad Cold/
---        Set 04  (10 images)               Set 04/  <- 10 JPEGs
+--    2025-10-09 Fashion Night BCN      2025-10-09 Fashion Night BCN/
+--      Elena                            Elena/
+--        Look 01                          Look 01/
+--        Look 02                          Look 02/
+--        Look 03                          Look 03/
+--      Sofia                            Sofia/
+--        Look 01                          Look 01/
+--        Look 02                          Look 02/
+--      Elena & Sofia                    Elena & Sofia/
+--        Finale                           Finale/
 --
 --  Color label mapping (C1 -> Finder):
 --    Red, Orange, Yellow, Green, Blue, Purple, Gray -> matching Finder label
@@ -90,8 +90,8 @@ on run
 	
 	-- 2. Choose recipe
 	tell me to activate
-	set recipeChoice to choose from list recipeNames Â
-		with prompt "Selected collection:  " & rootName & return & return & "Which Process Recipe should be used for the export?" Â
+	set recipeChoice to choose from list recipeNames Ã‚
+		with prompt "Selected collection:  " & rootName & return & return & "Which Process Recipe should be used for the export?" Ã‚
 		with title "CO Export with Collection Hierarchy"
 	if recipeChoice is false then return
 	set gRecipeName to item 1 of recipeChoice
@@ -167,8 +167,8 @@ on run
 	end if
 	
 	tell me to activate
-	set btn to button returned of (display dialog msg Â
-		buttons {"Open Destination", "Apply Color Labels", "Done"} default button "Apply Color Labels" Â
+	set btn to button returned of (display dialog msg Ã‚
+		buttons {"Open Destination", "Apply Color Labels", "Done"} default button "Apply Color Labels" Ã‚
 		with title "CO Export with Collection Hierarchy")
 	
 	if btn is "Open Destination" then
@@ -180,10 +180,10 @@ on run
 	else if btn is "Apply Color Labels" then
 		-- 9. Confirm batch queue is done before applying labels
 		tell me to activate
-		set confirmed to button returned of (display dialog Â
-			"Has Capture One finished processing the batch queue?" & return & return & Â
-			"(Check the queue indicator in the top bar is empty.)" Â
-			buttons {"Cancel", "Yes, apply labels"} default button "Yes, apply labels" Â
+		set confirmed to button returned of (display dialog Ã‚
+			"Has Capture One finished processing the batch queue?" & return & return & Ã‚
+			"(Check the queue indicator in the top bar is empty.)" Ã‚
+			buttons {"Cancel", "Yes, apply labels"} default button "Yes, apply labels" Ã‚
 			with title "CO Export with Collection Hierarchy")
 		if confirmed is "Yes, apply labels" then
 			my applyColorLabels(selColl, rootPath, exportStartTime)
